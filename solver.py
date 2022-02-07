@@ -1,17 +1,17 @@
 import sys, re
 import time
 import os
-class bcolors:
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKCYAN = '\033[96m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
-print(bcolors.HEADER)
+class terminal_colors:
+    start_purp = '\033[95m'
+    input_blue = '\033[94m'
+    input_cyan = '\033[96m'
+    result_green = '\033[92m'
+    numerror_yellow = '\033[93m'
+    error_red = '\033[91m'
+    line_normal = '\033[0m'
+    bold = '\033[1m'
+    underline = '\033[4m'
+print(terminal_colors.start_purp)
 os.system("clear")
 start = "Welcome to Asher's 24 Solver!"
 for char in start:
@@ -118,7 +118,7 @@ for i in calclist:
 calclist2 = list(uniq)
 
 while True:
-    cin = input(bcolors.OKCYAN + "input 4 numbers (serperated by spaces): ")
+    cin = input(terminal_colors.input_cyan + "input 4 numbers (serperated by spaces): ")
     cins = cin.split(' ')
     num = []
     for i in cins:
@@ -126,7 +126,7 @@ while True:
             num.append(float(i))
 
     if len(num) != 4:
-        print(bcolors.FAIL + "ERROR: invalid input! You need 4 numbers")
+        print(terminal_colors.error_red + "ERROR: invalid input! You need 4 numbers")
         sys.exit()
     a, b, c, d = num
 
@@ -142,15 +142,15 @@ while True:
     result = list(set(result))
     result.sort()
     if len(result) == 0:
-        print(bcolors.WARNING)
+        print(terminal_colors.numerror_yellow)
         print(f'ERROR: No possible way to get 24 with numbers')
         print(f'Numbers used: "{cin}"')
-        print(bcolors.OKBLUE)
+        print(terminal_colors.input_cyan)
     else:
         print(' ')
-        print(bcolors.ENDC + '====================')
-        print(bcolors.OKCYAN + 'All ways to get 24:')
+        print(terminal_colors.line_normal + '====================')
+        print(terminal_colors.input_cyan + 'All ways to get 24:')
         for i in result:
-            print(bcolors.OKGREEN + f"{i} = 24")
-        print(bcolors.ENDC + '====================')
-        print(bcolors.OKCYAN)
+            print(terminal_colors.result_green + f"{i} = 24")
+        print(terminal_colors.line_normal + '====================')
+        print(terminal_colors.input_cyan)
